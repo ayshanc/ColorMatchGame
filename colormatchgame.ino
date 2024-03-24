@@ -26,10 +26,6 @@ bool stop = false;
 
 void setup()
 {
-  red = random(10);
-  blue = random(10);
-  green = random(10);
-
   pinMode(RBGRLeft,OUTPUT); //Left RGB red LED
   pinMode(RBGBLeft,OUTPUT); //Left RGB green LED
   pinMode(RBGGLeft,OUTPUT); //Left RGB blue LED
@@ -53,6 +49,15 @@ void loop()
   int G = analogRead(gPinLeft);
   int swPinRead= digitalRead(swPin);
   actualColor(red,blue,green);
+
+  bool random=false;
+
+  if (!random){
+    red = random(10);
+    blue = random(10);
+    green = random(10);
+    random=true;
+  }
 
   if (swPinRead == 1 && !stop){
     if (RB > 1010 && G < 700 && G > 200)
